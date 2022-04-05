@@ -8,6 +8,39 @@ const navigationConfig = [
     icon: 'apps',
     children: [
       {
+        id: 'Dashboard',
+        title: 'Dashboard',
+        translate: 'Dashboard',
+        type: 'item',
+        icon: 'apartment',
+        url: 'apps/Dashboard',
+      },
+      {
+        id: 'Client',
+        title: 'Client',
+        translate: 'Client',
+        type: 'item',
+        icon: 'money',
+        url: 'apps/Client',
+      },
+      {
+        id: 'Pentester',
+        title: 'Pentester',
+        translate: 'Pentester',
+        type: 'item',
+        icon: 'engineering',
+        url: 'apps/Pentester',
+      },
+      {
+        id: 'Registration',
+        title: 'Registration',
+        translate: 'Registration',
+        type: 'item',
+        icon: 'account_box',
+        url: 'apps/Register',
+      },
+
+      {
         id: 'Organization',
         title: 'Organization',
         translate: 'Pentester\nTeam',
@@ -70,11 +103,6 @@ const navigationConfig = [
         type: 'item',
         icon: 'support_agent',
         url: 'apps/chat',
-        // badge: {
-        //   title: 13,
-        //   bg: "rgb(9,210,97)",
-        //   fg: "#FFFFFF"
-        // }
       },
       {
         id: 'knowledge-base',

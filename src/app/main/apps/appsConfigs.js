@@ -9,6 +9,10 @@ import CloudAppConfig from "./cloud/CloudAppConfig";
 import KnowledgeBaseConfig from "./knowledgebase/KnowledgeBaseConfig";
 import CompConfig from "./Comp/CompConfig";
 import SettingConfig from "./setting/SettingConfig";
+import ClientConfig from "./Client/ClientConfig";
+import PentesterConfig from "./Pentester/PentesterConfig";
+import RegisterConfig from "./Register/RegisterConfig";
+import DashboardConfig from "./Dashboard/DashbordConfig";
 
 const appsConfigs = [
   AnalyticsAppConfig,
@@ -21,7 +25,11 @@ const appsConfigs = [
   CompConfig,
   ChatAppConfig,
   VulConfig,
-  SettingConfig
+  SettingConfig,
+  ClientConfig,
+  PentesterConfig,
+  RegisterConfig,
+  DashboardConfig
 ];
 
 export default appsConfigs;
