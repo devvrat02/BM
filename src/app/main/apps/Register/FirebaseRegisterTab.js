@@ -168,7 +168,7 @@ function FirebaseRegisterTab(props) {
           type="submit"
           variant="contained"
           color="primary"
-          className="w-full mx-auto mt-16"
+          className="w-full mx-auto mt-16 mb-16"
           aria-label="REGISTER"
           disabled={_.isEmpty(dirtyFields) || !isValid}
           value="legacy"
