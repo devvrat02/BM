@@ -8,7 +8,7 @@ import {
 import "react-circular-progressbar/dist/styles.css";
 import RadialSeparators from "./RadialSeparators";
 import ProgressProvider from "./ProgressProvider";
-import { easeQuadInOut } from "d3-ease";
+
 
 
 
@@ -46,50 +46,50 @@ function Meter(props) {
     <>
       <Paper className="w-full overflow-hidden" square >
         <div className="flex items-center justify-between p-20 h-64 ">
-          <Typography className="text-16 font-medium">
-            Cyber Risk Matrix Score
+          <Typography className="text-16 font-medium justify-between">
+            LIVE
           </Typography>
         </div>
-        <div className="h-400 w-full" >
-          <div style={{ marginTop: 30, display: "flex" }}>
-            <div style={{ alignItems: "center", maxWidth: "90%", paddingTop: "5%", paddingBottom: "10%", paddingLeft: "10%", height: "90%" }}>
-              <ProgressProvider
-                valueStart={0}
-                valueEnd={props.score}
-                duration={1.4}
+        <div className=" w-full" >
+          {/* <div style={{ display: "flex" }}> */}
+          <div className="flex flex-col justify-between w-90 p-60">
+            <ProgressProvider
+              valueStart={0}
+              valueEnd={props.score}
+              duration={1.4}
 
-              >
-                {value => {
-                  const roundedValue = Math.round(value);
-                  return (
-                    <CircularProgressbarWithChildren
+            >
+              {value => {
+                const roundedValue = Math.round(value);
+                return (
+                  <CircularProgressbarWithChildren
 
-                      value={roundedValue}
-                      text={`${roundedValue}%`}
-                      strokeWidth={10}
-                      styles={buildStyles({
-                        strokeLinecap: "butt",
-                        pathColor: color(roundedValue),
-                      }
-                      )}
+                    value={roundedValue}
+                    text={`${roundedValue}`}
+                    strokeWidth={10}
+                    styles={buildStyles({
+                      strokeLinecap: "butt",
+                      pathColor: color(roundedValue),
+                    }
+                    )}
 
-                    >
-                      <RadialSeparators
-                        count={12}
+                  >
+                    <RadialSeparators
+                      count={12}
 
-                        style={{
-                          background: "#fff",
-                          width: "2px",
-                          height: `${10}%`
-                        }}
-                      />
-                    </CircularProgressbarWithChildren>
-                  );
-                }}
-              </ProgressProvider>
+                      style={{
+                        background: "#fff",
+                        width: "2px",
+                        height: `${10}%`
+                      }}
+                    />
+                  </CircularProgressbarWithChildren>
+                );
+              }}
+            </ProgressProvider>
 
-            </div>
           </div>
+          {/* </div> */}
         </div>
       </Paper>
     </>

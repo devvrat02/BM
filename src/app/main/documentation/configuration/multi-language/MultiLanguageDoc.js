@@ -41,7 +41,7 @@ function MultiLanguageDoc() {
       </Typography>
 
       <FuseHighlight component="pre" className="language-jsx mb-24">
-        {require('!raw-loader!app/main/apps/mail/i18n/en.js')}
+
       </FuseHighlight>
 
       <Typography className="mb-16" component="p">
@@ -50,31 +50,13 @@ function MultiLanguageDoc() {
       </Typography>
 
       <FuseHighlight component="pre" className="language-jsx mb-24">
-        {require('!raw-loader!app/main/apps/mail/MailAppConfig.js')}
+
       </FuseHighlight>
 
       <Typography className="mb-16" component="p">
         And use in a component with <code>useTranslation</code> hook as below:
       </Typography>
 
-      <FuseHighlight component="pre" className="language-jsx mb-24">
-        {`
-                        import {useTranslation} from 'react-i18next';
-
-                        const {t} = useTranslation('mailApp');
-                    
-                        return (
-                            <div className="p-24">
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    className="w-full"
-                                    onClick={handleOpenDialog}
-                                >
-                                    {t('COMPOSE')}
-                                </Button>
-                        `}
-      </FuseHighlight>
 
       <Typography className="text-20 mt-20 mb-10 font-700" variant="h5">
         Changing Language
@@ -85,14 +67,7 @@ function MultiLanguageDoc() {
       </Typography>
 
       <FuseHighlight component="pre" className="language-jsx mb-24">
-        {`
-                           import { changeLanguage } from 'app/store/i18nSlice';
 
-                            .
-                            .
-
-                            dispatch(changeLanguage(lng.id));
-                        `}
       </FuseHighlight>
 
       <Typography className="mb-16" component="p">

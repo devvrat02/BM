@@ -5,27 +5,27 @@ import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
+
 import TableRow from '@mui/material/TableRow';
 import RiskColor, { Riskstate } from './Riskcolor';
 import { styled } from '@mui/material/styles';
 import { Button, Menu, Typography } from '@mui/material';
-import TextField from '@mui/material/TextField';
+
 import MenuItem from '@mui/material/MenuItem';
-import { maxHeight, maxWidth } from '@mui/system';
+
 import Box from '@mui/material/Box';
 
 
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
+
 import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
+
 import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
+import { Asssets } from './Data';
 const columns = [
   { id: 'Assests', label: 'Assets', minWidth: 50 },
   { id: 'Risk', label: 'Risk', minWidth: 50 },
@@ -36,28 +36,7 @@ function createData(assets, risk, val = 0) {
   return { assets, risk, val };
 }
 
-const rows = [
-  createData('assets.securitybulls.com', 'CRITICAL'),
-  createData('admin.securitybulls.com', 'HIGH'),
-  createData('app.securitybulls.com', 'LOW'),
-  createData('web.securitybulls.com', 'CRITICAL'),
-  createData('load.securitybulls.com', 'HIGH'),
-  createData('db.securitybulls.com', 'LOW'),
-  createData('server.securitybulls.com', 'CRITICAL'),
-  createData('elon.securitybulls.com', 'HIGH'),
-  createData('dbms.securitybulls.com', 'LOW'),
-  createData('eth.securitybulls.com', 'CRITICAL'),
-  createData('mail.securitybulls.com', 'HIGH'),
-  createData('adysg.securitybulls.com', 'LOW'),
-  createData('adm.securitybulls.com', 'HIGH'),
-  createData('asd.securitybulls.com', 'LOW'),
-  createData('serv.securitybulls.com', 'MEDIUM'),
-  createData('land.securitybulls.com', 'MEDIUM'),
-  createData('bbms.securitybulls.com', 'LOW'),
-  createData('ethk.securitybulls.com', 'CRITICAL'),
-  createData('mails.securitybulls.com', 'HIGH'),
-  createData('adysgmps.securitybulls.com', 'MEDIUM'),
-];
+const rows = JSON.parse(JSON.stringify(Asssets));
 const srows = rows.slice().sort((a, b) => b.val - a.val);;
 
 const risks = [
