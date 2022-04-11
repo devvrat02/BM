@@ -36,7 +36,7 @@ function Register() {
                 className="flex w-full max-w-400 md:max-w-3xl  shadow-2xl overflow-hidden"
             >
 
-                <div className="Register-rightSection hidden md:flex flex-1 items-center justify-center p-64">
+                <div className="Register-rightSection  md:flex flex-1 items-center justify-center p-64">
 
                     <Card
                         className="Register-leftSection flex flex-col w-full max-w-sm items-center justify-center shadow-0"
@@ -69,7 +69,7 @@ function Register() {
 
 
 
-                            {(person == "CLIENT") ? <FirebaseRegisterTab /> : <FirebasePentRegister />}
+                            <FirebasePentRegister />
 
                         </CardContent>
 

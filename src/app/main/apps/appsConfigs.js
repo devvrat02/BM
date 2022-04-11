@@ -13,7 +13,7 @@ import ClientConfig from "./Client/ClientConfig";
 import PentesterConfig from "./Pentester/PentesterConfig";
 import RegisterConfig from "./Register/RegisterConfig";
 import DashboardConfig from "./Dashboard/DashbordConfig";
-
+import ScrumboardAppConfig from "./scrumboard/ScrumboardAppConfig"
 const appsConfigs = [
   AnalyticsAppConfig,
   VulnerabilitiesAppConfig,
@@ -29,7 +29,8 @@ const appsConfigs = [
   ClientConfig,
   PentesterConfig,
   RegisterConfig,
-  DashboardConfig
+  DashboardConfig,
+  ScrumboardAppConfig,
 ];
 
 export default appsConfigs;
