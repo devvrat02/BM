@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import { useEffect, useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerWithFirebase } from 'app/auth/store/registerSlice';
+import { registerWithFirebase, pentregisterWithFirebase } from 'app/auth/store/registerSlice';
 import * as yup from 'yup';
 import _ from '@lodash';
 
@@ -62,7 +62,7 @@ function FirebasePentRegister(props) {
     }, [authRegister.errors, setError]);
 
     function onSubmit(model) {
-        dispatch(registerWithFirebase(model));
+        dispatch(pentregisterWithFirebase(model));
     }
 
     return (

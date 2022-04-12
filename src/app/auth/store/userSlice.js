@@ -40,14 +40,46 @@ export const setUserDataFirebase = (user, authUser) => async (dispatch) => {
     user.data.settings &&
     user.data.settings.theme &&
     user.data.settings.layout &&
-    user.data.settings.layout.style
+    user.data.settings.layout.style &&
+    (user.use == 'admin')
   ) {
     // Set user data but do not update
     return dispatch(setUserData(user));
   }
 
-  // Create missing user settings
-  return dispatch(createUserSettingsFirebase(authUser));
+  if (user.use == 'admin') {
+    // Create missing user settings
+    return dispatch(createUserSettingsFirebase(authUser));
+  }
+  else return 0;
+};
+export const createUserSettingsFirebasePent = (authUser) => async (dispatch, getState) => {
+  const guestUser = getState().auth.user;
+  const fuseDefaultSettings = getState().fuse.settings.defaults;
+  const { currentUser } = firebase.auth();
+  const temp = authUser._delegate;
+  // console.log(authUser);
+
+  // console.log(temp);
+  /**
+   * Merge with current Settings
+   */
+  const user = _.merge({}, guestUser, {
+    uid: temp.uid,
+    from: 'firebase',
+    role: ['admin'],
+    data: {
+      displayName: authUser.displayName,
+      email: authUser.email,
+      settings: { ...fuseDefaultSettings },
+    },
+    use: 'pent',
+
+  });
+  currentUser.updateProfile(user.data);
+  dispatch(updateUserData(user));
+
+  return 1;
 };
 
 export const createUserSettingsFirebase = (authUser) => async (dispatch, getState) => {
@@ -70,8 +102,9 @@ export const createUserSettingsFirebase = (authUser) => async (dispatch, getStat
       email: authUser.email,
       settings: { ...fuseDefaultSettings },
     },
+
   });
-  currentUser.updateProfile(user.data);
+
   dispatch(updateUserData(user));
 
   return dispatch(setUserData(user));

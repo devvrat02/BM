@@ -22,10 +22,7 @@ const Root = styled('div')(({ theme }) => ({
 }));
 
 function Register() {
-    const [person, setPerson] = React.useState("PENTESTER");
-    const handleperson = (e) => {
-        (person === "CLIENT") ? setPerson("PENTESTER") : setPerson("CLIENT");
-    }
+
 
 
     return (
@@ -58,9 +55,9 @@ function Register() {
                                         <Typography
                                             className="text-16 tracking-widest -mt-8 font-700"
                                             color="textSecondary"
-                                            onClick={handleperson}
+
                                         >
-                                            {person}
+                                            PENTESTER
                                         </Typography>
 
                                     </div>
