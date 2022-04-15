@@ -50,7 +50,8 @@ const authDB = {
 					}
 				},
 				shortcuts: ['calendar', 'mail', 'contacts']
-			}
+			},
+			use: 'admin'
 		},
 		{
 			uuid: 'XgbuVEXBU6gtSKdbTYR1Zbbby1i3',
@@ -89,7 +90,8 @@ const authDB = {
 					}
 				},
 				shortcuts: ['calendar', 'mail', 'contacts', 'todo']
-			}
+			},
+			use: 'admin'
 		}
 	]
 };
@@ -182,7 +184,8 @@ mock.onPost('/api/auth/register').reply(request => {
 				email,
 				settings: {},
 				shortcuts: []
-			}
+			},
+			use: 'admim'
 		};
 
 		authDB.users = [...authDB.users, newUser];

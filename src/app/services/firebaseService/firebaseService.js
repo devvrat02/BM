@@ -51,7 +51,15 @@ class FirebaseService {
 
 
   };
+  updatePentData = (user) => {
+    if (!firebase.apps.length) {
+      return false;
+    }
 
+    return this.db.ref(`users/pent/${user.uid}`).set(user);
+
+
+  };
   onAuthStateChanged = (callback) => {
     if (!this.auth) {
       return;

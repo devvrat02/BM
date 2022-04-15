@@ -265,3 +265,4 @@ function FirebasePentRegister(props) {
 }
 
 export default FirebasePentRegister;
+

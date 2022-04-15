@@ -47,18 +47,20 @@ export const setUserDataFirebase = (user, authUser) => async (dispatch) => {
     return dispatch(setUserData(user));
   }
 
-  if (user.use == 'admin') {
-    // Create missing user settings
-    return dispatch(createUserSettingsFirebase(authUser));
-  }
-  else return 0;
+
+  // Create missing user settings
+  return dispatch(createUserSettingsFirebase(authUser));
+
+
 };
 export const createUserSettingsFirebasePent = (authUser) => async (dispatch, getState) => {
   const guestUser = getState().auth.user;
   const fuseDefaultSettings = getState().fuse.settings.defaults;
-  const { currentUser } = firebase.auth();
+  // const { currentUser } = firebase.auth();
   const temp = authUser._delegate;
   // console.log(authUser);
+  console.log(guestUser);
+  console.log(authUser);
 
   // console.log(temp);
   /**
@@ -76,8 +78,8 @@ export const createUserSettingsFirebasePent = (authUser) => async (dispatch, get
     use: 'pent',
 
   });
-  currentUser.updateProfile(user.data);
-  dispatch(updateUserData(user));
+  // currentUser.updateProfile(user.data);
+  dispatch(updateUserpentData(user));
 
   return 1;
 };
@@ -179,6 +181,20 @@ export const logoutUser = () => async (dispatch, getState) => {
   dispatch(setInitialSettings());
 
   return dispatch(userLoggedOut());
+};
+
+export const updateUserpentData = (user) => async (dispatch, getState) => {
+  if (!user.role || user.role.length === 0) {
+    // is guest
+    return;
+  }
+  firebaseService.updatePentData(user)
+    .then(() => {
+      dispatch(showMessage({ message: 'User data saved to firebase' }));
+    })
+    .catch((error) => {
+      dispatch(showMessage({ message: error.message }));
+    });
 };
 
 export const updateUserData = (user) => async (dispatch, getState) => {
