@@ -42,11 +42,39 @@ class FirebaseService {
   };
 
 
-  updateUserData = (user) => {
+  getOrgData = () => {
+    if (!firebase.apps.length) {
+      return false;
+    }
+    return new Promise((resolve, reject) => {
+      this.db
+        .ref(`PentList/Org`)
+        .once('value')
+        .then((snapshot) => {
+          const user = snapshot.val();
+          resolve(user);
+        });
+    });
+  };
+
+  pushpent = (user) => {
     if (!firebase.apps.length) {
       return false;
     }
 
+    let val = getOrgData();
+    val.push(user);
+    console.log(val);
+
+    return this.db.ref(`PentList/Org`).set(val);
+
+
+    // return   this.db.ref(`PentList/Org`).push(user);
+  }
+  updateUserData = (user) => {
+    if (!firebase.apps.length) {
+      return false;
+    }
     return this.db.ref(`users/client/${user.uid}`).set(user);
 
 

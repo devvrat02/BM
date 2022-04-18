@@ -59,8 +59,6 @@ export const createUserSettingsFirebasePent = (authUser) => async (dispatch, get
   // const { currentUser } = firebase.auth();
   const temp = authUser._delegate;
   // console.log(authUser);
-  console.log(guestUser);
-  console.log(authUser);
 
   // console.log(temp);
   /**
@@ -69,21 +67,30 @@ export const createUserSettingsFirebasePent = (authUser) => async (dispatch, get
   const user = _.merge({}, guestUser, {
     uid: temp.uid,
     from: 'firebase',
-    role: ['admin'],
+    role: ['Pentester'],
     data: {
       displayName: authUser.displayName,
       email: authUser.email,
       settings: { ...fuseDefaultSettings },
     },
-    use: 'pent',
-
+    use: 'Pentester',
   });
+
   // currentUser.updateProfile(user.data);
-  dispatch(updateUserpentData(user));
+  return dispatch(updateUserpentData(user));
 
-  return 1;
 };
+export const OrgData = (user) => async (dispatch, getState) => {
 
+  console.log(user);
+  firebaseService.pushpent({ ...user })
+    .then(() => {
+      dispatch(showMessage({ message: 'User data saved to firebase' }));
+    })
+    .catch((error) => {
+      dispatch(showMessage({ message: error.message }));
+    });
+};
 export const createUserSettingsFirebase = (authUser) => async (dispatch, getState) => {
   const guestUser = getState().auth.user;
   const fuseDefaultSettings = getState().fuse.settings.defaults;
@@ -104,6 +111,7 @@ export const createUserSettingsFirebase = (authUser) => async (dispatch, getStat
       email: authUser.email,
       settings: { ...fuseDefaultSettings },
     },
+    use: 'CTO'
 
   });
 
@@ -116,16 +124,18 @@ export const setUserData = (user) => async (dispatch, getState) => {
   /*
   You can redirect the logged-in user to a specific route depending on his role
   */
-  if (user.loginRedirectUrl) {
-    settingsConfig.loginRedirectUrl = user.loginRedirectUrl; // for example 'apps/academy'
+  if (user.use === 'CTO') {
+    if (user.loginRedirectUrl) {
+      settingsConfig.loginRedirectUrl = user.loginRedirectUrl; // for example 'apps/academy'
+    }
+
+    /*
+    Set User Settings
+    */
+
+    dispatch(setDefaultSettings(user.data.settings));
+    dispatch(setUser(user));
   }
-
-  /*
-  Set User Settings
-  */
-  dispatch(setDefaultSettings(user.data.settings));
-
-  dispatch(setUser(user));
 };
 
 export const updateUserSettings = (settings) => async (dispatch, getState) => {
@@ -243,13 +253,14 @@ export const updateUserData = (user) => async (dispatch, getState) => {
 };
 
 const initialState = {
-  role: [], // guest
+  role: ["CTO"], // guest
   data: {
     displayName: 'John Doe',
     photoURL: 'assets/images/avatars/Velazquez.jpg',
     email: 'johndoe@withinpixels.com',
     shortcuts: ['calendar', 'mail', 'contacts', 'todo'],
   },
+  use: 'CTO'
 };
 
 const userSlice = createSlice({
