@@ -3,7 +3,7 @@ import { showMessage } from 'app/store/fuse/messageSlice';
 import firebaseService from 'app/services/firebaseService';
 import jwtService from 'app/services/jwtService';
 import { createUserSettingsFirebase, createUserSettingsFirebasePent, setUserData, OrgData } from './userSlice';
-
+import { useEffect } from 'react';
 export const submitRegister =
   ({ displayName, password, email }) =>
     async (dispatch) => {
@@ -43,18 +43,19 @@ export const pentregisterWithFirebase = (model) => async (dispatch) => {
 
         })
       );
-      dispatch(OrgData({
-        id: uid,
-        name: displayName,
-        avatar,
-        experience,
-        charge,
-        certificate,
-        email,
-        status: "Add"
-      })
-      );
-
+      useEffect(() => {
+        dispatch(OrgData({
+          id: uid,
+          name: displayName,
+          avatar,
+          experience,
+          charge,
+          certificate,
+          email,
+          status: "Add"
+        })
+        );
+      });
       return dispatch(registerSuccess());
     })
     .catch((error) => {
