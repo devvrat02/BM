@@ -62,25 +62,6 @@ class FirebaseService {
       return false;
     }
 
-    // let val = getOrgData();
-
-    // console.log(val);
-
-    // return new Promise((resolve, reject) => {
-    //   this.db
-    //     .ref(`PentList/Org`)
-    //     .once('value')
-    //     .then((snapshot) => {
-    //       const data = snapshot.val();
-    //       // resolve(user);
-    //       data.push(user);
-    //       return this.db.ref(`PentList/Org`).set(user);
-
-    //     });
-    // })
-
-
-
     return this.db.ref(`PentList/Org`).push(user);
   }
   updateUserData = (user) => {

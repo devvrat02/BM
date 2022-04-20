@@ -14,7 +14,7 @@ import { logoutUser } from 'app/auth/store/userSlice';
 function UserMenu(props) {
   const dispatch = useDispatch();
   const user = useSelector(({ auth }) => auth.user);
-
+  if (user.data.displayName === '') { dispatch(logoutUser()) }
 
   const [userMenu, setUserMenu] = useState(null);
 

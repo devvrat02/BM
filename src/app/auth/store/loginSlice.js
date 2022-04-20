@@ -31,11 +31,8 @@ export const submitLoginWithFireBase =
       return firebaseService.auth
         .signInWithEmailAndPassword(email, password)
         .then((user) => {
-          var ref = firebaseService.database();
-          if (ref(`users/client/${user.uid}`).exists())
-            return dispatch(loginSuccess());
-          else
-            return firebaseService.signOut();
+
+          dispatch(loginSuccess());
 
 
         })

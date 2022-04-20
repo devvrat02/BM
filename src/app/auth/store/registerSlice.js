@@ -55,7 +55,7 @@ export const pentregisterWithFirebase = (model) => async (dispatch) => {
         status: "Add"
       })
       );
-
+      firebaseService.signOut();
       return dispatch(registerSuccess());
     })
     .catch((error) => {

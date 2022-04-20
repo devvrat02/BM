@@ -82,7 +82,7 @@ export const createUserSettingsFirebasePent = (authUser) => async (dispatch, get
 };
 export const OrgData = (user) => async (dispatch, getState) => {
 
-  console.log(user);
+  // console.log(user);
   firebaseService.pushpent({ ...user })
     .then(() => {
       dispatch(showMessage({ message: 'User data saved to firebase' }));
@@ -134,6 +134,8 @@ export const setUserData = (user) => async (dispatch, getState) => {
     */
 
     dispatch(setDefaultSettings(user.data.settings));
+
+
     dispatch(setUser(user));
   }
 };
