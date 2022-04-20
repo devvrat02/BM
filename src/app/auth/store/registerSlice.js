@@ -43,19 +43,19 @@ export const pentregisterWithFirebase = (model) => async (dispatch) => {
 
         })
       );
-      useEffect(() => {
-        dispatch(OrgData({
-          id: uid,
-          name: displayName,
-          avatar,
-          experience,
-          charge,
-          certificate,
-          email,
-          status: "Add"
-        })
-        );
-      });
+
+      dispatch(OrgData({
+        id: uid,
+        name: displayName,
+        avatar,
+        experience,
+        charge,
+        certificate,
+        email,
+        status: "Add"
+      })
+      );
+
       return dispatch(registerSuccess());
     })
     .catch((error) => {
