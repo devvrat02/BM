@@ -9,11 +9,15 @@ const settingsConfig = {
     // main: 'alpha',
     // navbar: 'alpha',
     // toolbar: 'alpha',
-    // footer: 'alpha',
-    main: 'defaultDark',
-    navbar: 'defaultDark',
-    toolbar: 'defaultDark',
-    footer: 'defaultDark',
+    // footer: 'alpha',light1
+    // main: 'defaultDark',
+    // navbar: 'defaultDark',
+    // toolbar: 'defaultDark',
+    // footer: 'defaultDark',
+    main: 'light1',
+    navbar: 'light1',
+    toolbar: 'light1',
+    footer: 'light1',
   },
   loginRedirectUrl: '/', // Default redirect url for the logged-in user
 };
